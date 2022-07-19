@@ -10,8 +10,10 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "appium": "^1.22.3",
+    "appium-doctor": "^1.16.0",
     "react": "17.0.2",
-    "react-native": "0.68.2"
+    "react-native": "^0.68.0"
   },
   "devDependencies": {
     "@babel/core": "^7.18.9",
@@ -19,9 +21,10 @@
     "@react-native-community/eslint-config": "^3.0.3",
     "babel-jest": "^28.1.3",
     "eslint": "^8.20.0",
-    "jest": "^28.1.3",
+    "jest": "25.1.0",
     "metro-react-native-babel-preset": "^0.71.3",
-    "react-test-renderer": "17.0.2"
+    "react-test-renderer": "17.0.2",
+    "wd": "^1.14.0"
   },
   "jest": {
     "preset": "react-native"
