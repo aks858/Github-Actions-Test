@@ -82,7 +82,7 @@ jobs:
           BUILT_APP=`find ~/Library/Developer/Xcode/DerivedData -name GithubActionsTest.app | grep Build/Products/Debug-iphonesimulator/GithubActionsTest.app`
           mkdir -p ios/build/GithubActionsTest/Build/Products/Debug-iphonesimulator
           cp -R $BUILT_APP ios/build/GithubActionsTest/Build/Products/Debug-iphonesimulator
-          sleep 30
+          sleep 20
           yarn test
       # Upload Appium Logs
       - name: Upload Appium logs
