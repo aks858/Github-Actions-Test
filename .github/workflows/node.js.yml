@@ -46,7 +46,7 @@ jobs:
            xcrun simctl create TestiPhoneX com.apple.CoreSimulator.SimDeviceType.iPhone-X com.apple.CoreSimulator.SimRuntime.iOS-15-0 > deviceid.txt 
            DEVICEUUID=`cat deviceid.txt`          
            echo $DEVICEUUID          
-           sed -i -e "s/{IPHONE_UUID}/$DEVICEUUID/g" __tests__/e2e/template_appium_configs_ios.js          
+           sed -i -e "s/{IPHONE_UUID}/$DEVICEUUID/g" __tests__/appium_config.js          
            xcrun simctl boot $DEVICEUUID &
 
       - name: Use HTTPS repos
