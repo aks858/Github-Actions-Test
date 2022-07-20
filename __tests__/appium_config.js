@@ -3,7 +3,7 @@ const config = {
     platformName: "iOS",
     platformVersion: "15.2",
     deviceName: "iPhone 13",
-    app: "/Users/amitesh.sharma/Library/Developer/Xcode/DerivedData/GithubActionsTest-gqvytrooztrkfjeykkntuzljffdh/Build/Products/Debug-iphonesimulator/GithubActionsTest.app"
+    app: "/Users/runner/Library/Developer/Xcode/DerivedData/GithubActionsTest-cbzjwynjkoijsiftlxjwlpqksrnj/Build/Products/Debug-iphonesimulator/GithubActionsTest.app"
 };
 
 export { config }
