@@ -21,13 +21,12 @@ jobs:
       - name: Clean Packages 
         run: |
           rm -rf node_modules
-          yarn cache clean --force
+          npm cache clean --force
           rm -rf package-lock.json
 
       - name: Install dependencies
         run: |
-          yarn install
-          yarn install appium wd
+          npm install -g yarn
           
       - name: Install ios dependencies
         run: |
