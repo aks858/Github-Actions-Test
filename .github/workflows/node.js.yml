@@ -39,11 +39,11 @@ jobs:
       - name: Install iOS 15.2 Runtime        
         run: |  
           gem install xcode-install
-          xcversion simulators --install='iOS 15.2'      
+          xcversion simulators --install='iOS 15.0'      
 
-      - name: Create and Run iOS Emulator - iPhoneX on iOS 15.2, Update default appium config for iOS        
+      - name: Create and Run iOS Emulator - iPhoneX on iOS 15.0, Update default appium config for iOS        
         run: |
-           xcrun simctl create TestiPhoneX com.apple.CoreSimulator.SimDeviceType.iPhone-X com.apple.CoreSimulator.SimRuntime.iOS-15-2 > deviceid.txt 
+           xcrun simctl create TestiPhoneX com.apple.CoreSimulator.SimDeviceType.iPhone-X com.apple.CoreSimulator.SimRuntime.iOS-15-0 > deviceid.txt 
            DEVICEUUID=`cat deviceid.txt`          
            echo $DEVICEUUID          
            sed -i -e "s/{IPHONE_UUID}/$DEVICEUUID/g" __tests__/e2e/template_appium_configs_ios.js          
