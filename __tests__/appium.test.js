@@ -5,9 +5,9 @@ const PORT = 4723;
 const config = {
     automationName: "XCUITest",
     platformName: "iOS",
-    platformVersion: "15.5",
+    platformVersion: "15.2",
     deviceName: "iPhone 13",
-    app: "/Users/amitesh.sharma/Library/Developer/Xcode/DerivedData/GithubActionsTest-gqvytrooztrkfjeykkntuzljffdh/Build/Products/Debug-iphonesimulator/GithubActionsTest.app"
+    app: "/Users/runner/Library/Developer/Xcode/DerivedData/GithubActionsTest-cbzjwynjkoijsiftlxjwlpqksrnj/Build/Products/Debug-iphonesimulator/GithubActionsTest.app"
 };
 const driver = wd.promiseChainRemote('localhost', PORT);
 
