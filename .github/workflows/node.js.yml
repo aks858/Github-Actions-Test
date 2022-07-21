@@ -53,13 +53,13 @@ jobs:
            sed -i -e "s/{IPHONE_UUID}/$DEVICEUUID/g" __tests__/appium_config.js          
            xcrun simctl boot $DEVICEUUID &
 
-      - name: Use HTTPS repos
-        run: |
-          git config --global url."https://github".insteadOf ssh://git@github 
-
       - name: Pod Install
         run: |
           cd ios && pod install && cd ..
+
+      - name: Use HTTPS repos
+        run: |
+          git config --global url."https://github".insteadOf ssh://git@github 
 
       - name: Start the Appium Server
         run: ./node_modules/.bin/appium --log-timestamp --log-no-colors --allow-insecure chromedriver_autodownload > appium.log &
@@ -74,8 +74,8 @@ jobs:
         run: |
           node_modules/react-native/scripts/launchPackager.command &
 
-      - name: Build application through xcode
-        run:  cd ios && xcodebuild -workspace GithubActionsTest.xcworkspace -scheme GithubActionsTest -configuration Release -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 12' && cd ..
+      # - name: Build application through xcode
+      #   run:  cd ios && xcodebuild -workspace GithubActionsTest.xcworkspace -scheme GithubActionsTest -configuration Release -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 12' && cd ..
 
       - name: Build iOS App and Run Tests
         env:
