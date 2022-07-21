@@ -8,16 +8,12 @@ on: [push]
 jobs:
   build:
     runs-on: macOS-latest
-    strategy:
-      matrix:
-        node-version: [12.x]
     
     steps:
-
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Set up Node JS 10.17.0
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
           node-version: '14.x'
 
@@ -63,7 +59,7 @@ jobs:
 
       - name: Poll for Appium Server to Start
         run: |
-          until $(curl --output /dev/null --silent --head --fail http://127.0.0.1:4723/wd/hub/sessions); do
+          until $(curl --output /dev/null --silent --head --fail http://127.0.0.1:4723/wd/hub/session); do
             sleep 5
           done
 
@@ -78,13 +74,13 @@ jobs:
           E2E_TEST_TAGS: 'E2E'
           TEST_ENV: 'test'
         run: |
-          npx react-native run-ios
+          npx react-native run-ios &
           BUILT_APP=`find ~/Library/Developer/Xcode/DerivedData -name GithubActionsTest.app | grep Build/Products/Debug-iphonesimulator/GithubActionsTest.app`
           mkdir -p ios/build/GithubActionsTest/Build/Products/Debug-iphonesimulator
           cp -R $BUILT_APP ios/build/GithubActionsTest/Build/Products/Debug-iphonesimulator
-          sleep 20
-          yarn test
-          
+          sleep 30
+          yarn test &
+
       # Upload Appium Logs
       - name: Upload Appium logs
         uses: actions/upload-artifact@v1
