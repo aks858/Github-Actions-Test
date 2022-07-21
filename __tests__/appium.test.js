@@ -1,6 +1,6 @@
 import wd from 'wd';
 
-jasmine.DEFAULT_TIMEOUT_INTERVAL = 60000;
+jasmine.DEFAULT_TIMEOUT_INTERVAL = 180000;
 const PORT = 4723;
 const config = {
     automationName: "XCUITest",
