@@ -75,7 +75,7 @@ jobs:
           node_modules/react-native/scripts/launchPackager.command &
 
       - name: Build application through xcode
-        run:  cd ios && xcodebuild -workspace GithubActionsTest.xcworkspace -scheme GithubActionsTest cd ..
+        run:  cd ios && xcodebuild -workspace GithubActionsTest.xcworkspace -scheme GithubActionsTest && cd ..
 
       - name: Build iOS App and Run Tests
         env:
