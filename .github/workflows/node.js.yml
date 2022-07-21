@@ -25,8 +25,7 @@ jobs:
 
       - name: Install React Native CLI
         run: |
-          npm install react-native-cli
-          npm install -g yarn
+          yarn add react-native-cli
 
       # - name: List iOS Devices & Platforms        
       #   run: |          
