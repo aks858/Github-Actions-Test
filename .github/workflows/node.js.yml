@@ -75,7 +75,7 @@ jobs:
           node_modules/react-native/scripts/launchPackager.command &
 
       - name: Build application through xcode
-        run:  xcodebuild -workspace VerkadaKeypad.xcworkspace -scheme VerkadaKeypad
+        run:  xcodebuild -workspace GithubActionsTest.xcworkspace -scheme GithubActionsTest
 
       - name: Build iOS App and Run Tests
         env:
