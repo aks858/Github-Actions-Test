@@ -57,9 +57,9 @@ jobs:
         run: |
           git config --global url."https://github".insteadOf ssh://git@github 
 
-      - name: Pod Install
-        run: |
-          cd ios && pod install && cd ..
+      # - name: Pod Install
+      #   run: |
+      #     cd ios && pod install && cd ..
 
       - name: Start the Appium Server
         run: ./node_modules/.bin/appium --log-timestamp --log-no-colors --allow-insecure chromedriver_autodownload > appium.log &
