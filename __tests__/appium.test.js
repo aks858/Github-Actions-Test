@@ -12,17 +12,21 @@ const config = {
 const driver = wd.promiseChainRemote('localhost', PORT);
 
 
-beforeAll(async () => {
+try {
+    beforeAll(async () => {
 
-  const data = await driver.status();
-  console.log(data);    
-
-  
-  await driver.init(config);
-  await driver.sleep(2000); // wait for app to load a
-})
-
-test('appium renders', async () => {
-  expect(await driver.hasElementByAccessibilityId('app-view')).toBe(true);
-  expect(await driver.hasElementByAccessibilityId('app-view-not-here')).toBe(false);
-});
+        const data = await driver.status();
+        console.log(data);    
+      
+        
+        await driver.init(config);
+        await driver.sleep(2000); // wait for app to load a
+      })
+      
+      test('appium renders', async () => {
+        expect(await driver.hasElementByAccessibilityId('app-view')).toBe(true);
+        expect(await driver.hasElementByAccessibilityId('app-view-not-here')).toBe(false);
+      });
+} catch {
+    console.log("swift error handling")
+}
