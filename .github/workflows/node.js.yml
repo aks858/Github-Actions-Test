@@ -86,9 +86,9 @@ jobs:
           TEST_ENV: 'test'
         run: |
           npx react-native run-ios 
-          BUILT_APP=`find ~/Library/Developer/Xcode/DerivedData -name GithubActionsTest.app | grep Build/Products/Debug-iphonesimulator/GithubActionsTest.app`
-          mkdir -p ios/build/GithubActionsTest/Build/Products/Debug-iphonesimulator
-          cp -R $BUILT_APP ios/build/GithubActionsTest/Build/Products/Debug-iphonesimulator
+        # BUILT_APP=`find ~/Library/Developer/Xcode/DerivedData -name GithubActionsTest.app | grep Build/Products/Debug-iphonesimulator/GithubActionsTest.app`
+        # mkdir -p ios/build/GithubActionsTest/Build/Products/Debug-iphonesimulator
+        # cp -R $BUILT_APP ios/build/GithubActionsTest/Build/Products/Debug-iphonesimulator
           sleep 30
           yarn test 
 
