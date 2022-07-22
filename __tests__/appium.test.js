@@ -11,7 +11,13 @@ const config = {
 };
 const driver = wd.promiseChainRemote('localhost', PORT);
 
+
 beforeAll(async () => {
+
+  const data = await driver.status();
+  console.log(data);    
+
+  
   await driver.init(config);
   await driver.sleep(2000); // wait for app to load a
 })

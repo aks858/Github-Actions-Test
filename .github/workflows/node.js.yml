@@ -35,8 +35,7 @@ jobs:
       - name: Install React Native CLI
         run: |
           yarn add react-native-cli
-          yarn add appium appium-doctor
-          yarn add --save-dev wd
+          yarn add appium appium-doctor wd
 
       # - name: List iOS Devices & Platforms        
       #   run: |          
