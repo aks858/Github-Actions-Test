@@ -26,7 +26,7 @@ jobs:
 
       - name: Yarn Install
         run: |
-          yarn install --save-dev
+          yarn install
         
       - name: Install React Native CLI
         run: |
