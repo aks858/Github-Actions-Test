@@ -67,7 +67,7 @@ jobs:
 
       - name: Open Metro Bundler in Background
         run: |
-          node_modules/react-native/scripts/launchPackager.command > bundler.log &
+          yarn start > bundler.log &
 
       - name: Build application through xcode
         run:  cd ios && xcodebuild -workspace GithubActionsTest.xcworkspace -scheme GithubActionsTest -configuration Release -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 12' && cd ..
