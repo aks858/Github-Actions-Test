@@ -13,17 +13,17 @@ const driver = wd.promiseChainRemote('localhost', PORT);
 
 
 try {
-    beforeAll(async () => {
+    // beforeAll(async () => {
 
-        const data = await driver.status();
-        console.log(data);    
-        let pageSource = await driver.source();
-        console.log(pageSource);
+    //     const data = await driver.status();
+    //     console.log(data);    
+    //     let pageSource = await driver.source();
+    //     console.log(pageSource);
       
         
-        await driver.init(config);
-        await driver.sleep(2000); // wait for app to load a
-      })
+    //     await driver.init(config);
+    //     await driver.sleep(2000); // wait for app to load a
+    //   })
       
       test('appium renders', async () => {
         // expect(await driver.hasElementByAccessibilityId('app-view')).toBe(true);

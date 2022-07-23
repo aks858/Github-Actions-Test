@@ -57,7 +57,7 @@ jobs:
           git config --global url."https://github".insteadOf ssh://git@github 
 
       - name: Start the Appium Server
-        run: appium --log-timestamp --log-no-colors --allow-insecure chromedriver_autodownload > appium.log &
+        run: ./node_modules/.bin/appium --log-timestamp --log-no-colors --allow-insecure chromedriver_autodownload > appium.log &
 
       - name: Poll for Appium Server to Start
         run: |
