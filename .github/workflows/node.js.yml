@@ -32,6 +32,10 @@ jobs:
         run: |
           yarn add react-native-cli
           yarn add appium appium-doctor wd
+      
+      - name: Run Appium Doctor
+        run: |
+          ./node_modules/.bin/appium-doctor
 
       # - name: List iOS Devices & Platforms        
       #   run: |          
