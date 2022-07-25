@@ -40,6 +40,8 @@ jobs:
           git config --global url."https://github".insteadOf ssh://git@github 
 
       - name: Start the Appium Server
+        env:
+          TEST_RUNNER: 'remote'
         run: ./node_modules/.bin/appium --log-timestamp --log-no-colors --allow-insecure chromedriver_autodownload > appium.log &
 
       - name: Poll for Appium Server to Start
