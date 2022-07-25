@@ -5,7 +5,6 @@ try {
         jasmine.DEFAULT_TIMEOUT_INTERVAL = 60000;
         const PORT = 4723;
         const config = {
-            automationName: "XCUITest",
             platformName: "iOS",
             platformVersion: "15.2",
             deviceName: "iPhone 13",
@@ -14,6 +13,7 @@ try {
         console.log(config );
         try {
             const driver = wd.promiseChainRemote('localhost', PORT);
+            await driver.init(config);
             console.log(await driver);
         } catch(e) {
             console.log(e);
