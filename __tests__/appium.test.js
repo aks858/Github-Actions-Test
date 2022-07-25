@@ -5,9 +5,12 @@ const driver = wd.promiseChainRemote('localhost', PORT);
 jasmine.DEFAULT_TIMEOUT_INTERVAL = 60000;
 const config = {
     platformName: "iOS",
-    platformVersion: "15.5",
+    platformVersion: process.env.TEST_RUNNER === 'remote' ? "15.2" : "15.5",
+    // platformVersion: "15.2",
     deviceName: "iPhone 13",
-    app: "/Users/amitesh.sharma/Library/Developer/Xcode/DerivedData/GithubActionsTest-fotqtphbgdswpvcosfxrzoppngmm/Build/Products/Debug-iphonesimulator/GithubActionsTest.app"
+    app: process.env.TEST_RUNNER === 'remote' ? "/Users/runner/Library/Developer/Xcode/DerivedData/GithubActionsTest-cbzjwynjkoijsiftlxjwlpqksrnj/Build/Products/Debug-iphonesimulator/GithubActionsTest.app"
+    : "/Users/amitesh.sharma/Library/Developer/Xcode/DerivedData/GithubActionsTest-fotqtphbgdswpvcosfxrzoppngmm/Build/Products/Debug-iphonesimulator/GithubActionsTest.app"
+    // app: "/Users/runner/Library/Developer/Xcode/DerivedData/GithubActionsTest-cbzjwynjkoijsiftlxjwlpqksrnj/Build/Products/Debug-iphonesimulator/GithubActionsTest.app"
 };
 
 beforeAll(async () => {

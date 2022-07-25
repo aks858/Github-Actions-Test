@@ -1,0 +1,1 @@
+export const IS_TEST_RUNNER = 'remote'

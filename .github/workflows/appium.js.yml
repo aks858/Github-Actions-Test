@@ -37,7 +37,7 @@ jobs:
           until $(curl --output /dev/null --silent --head --fail http://127.0.0.1:4723/wd/hub/sessions); do
             sleep 5
           done
-          
+
       - name: Open Metro Bundler in Background
         run: |
           yarn start > bundler.log &
@@ -47,7 +47,7 @@ jobs:
           E2E_TEST_PLATFORM: 'ios'
           E2E_TEST_DEFAULTS: 'true'
           E2E_TEST_TAGS: 'E2E'
-          TEST_ENV: 'test'
+          IS_TEST_RUNNER: 'self-hosting'
         run: |
           npx react-native run-ios
           BUILT_APP=`find ~/Library/Developer/Xcode/DerivedData -name GithubActionsTest.app | grep Build/Products/Debug-iphonesimulator/GithubActionsTest.app`
