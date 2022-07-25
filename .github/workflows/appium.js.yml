@@ -1,6 +1,6 @@
 # This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
-name: Node.js CI
+name: Appium CI
 on: [push]
 jobs:
   build:
@@ -37,12 +37,15 @@ jobs:
             sleep 5
           done
 
+      - name: Build application through xcode
+        run:  cd ios && xcodebuild -workspace GithubActionsTest.xcworkspace -scheme GithubActionsTest -configuration Debug -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 13' && cd ..
+
       - name: Open Metro Bundler in Background
         run: |
           yarn start > bundler.log &
 
-      # - name: Build application through xcode
-      #   run:  cd ios && xcodebuild -workspace GithubActionsTest.xcworkspace -scheme GithubActionsTest -configuration Debug -sdk iphonesimulator 'platform=iOS Simulator,name=iPhone 13' && cd ..
+      - name: Build application through xcode
+        run:  cd ios && xcodebuild -workspace GithubActionsTest.xcworkspace -scheme GithubActionsTest -configuration Debug -sdk iphonesimulator 'platform=iOS Simulator,name=iPhone 13' && cd ..
       
       - name: Build iOS App and Run Tests
         env:
