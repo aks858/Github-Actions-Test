@@ -1,5 +1,6 @@
 import wd from 'wd';
 
+const driver = wd.promiseChainRemote('localhost', PORT);
 try {
     beforeAll(async () => {
         jasmine.DEFAULT_TIMEOUT_INTERVAL = 60000;
@@ -12,7 +13,6 @@ try {
         };
         console.log(config );
         try {
-            const driver = wd.promiseChainRemote('localhost', PORT);
             await driver.init(config);
             console.log(await driver);
         } catch(e) {
