@@ -18,12 +18,6 @@ jobs:
         with:
           node-version: '14.x'
 
-      # - name: Clean Packages 
-      #   run: |
-      #     rm -rf node_modules
-      #     npm cache clean --force
-      #     rm -rf package-lock.json
-
       - name: Yarn Install
         run: |
           yarn install
@@ -35,14 +29,7 @@ jobs:
       
       - name: Run Appium Doctor
         run: |
-          ./node_modules/.bin/appium-doctor
-
-      # - name: List iOS Devices & Platforms        
-      #   run: |          
-      #     xcrun simctl list      
-      # - name: Install iOS 15.0 Runtime        
-      #   run: |  
-      #     xcversion simulators --install='iOS 15.0'     
+          ./node_modules/.bin/appium-doctor   
 
       - name: Create and Run iOS Emulator - iPhoneX on iOS 15.2, Update default appium config for iOS        
         run: |
