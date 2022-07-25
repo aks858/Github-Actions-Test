@@ -1,7 +1,7 @@
 # This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
 name: Node.js CI
-on: [create]
+on: [push]
 jobs:
   build:
     runs-on: macOS-latest
@@ -18,12 +18,6 @@ jobs:
         with:
           node-version: '14.x'
 
-      # - name: Clean Packages 
-      #   run: |
-      #     rm -rf node_modules
-      #     npm cache clean --force
-      #     rm -rf package-lock.json
-
       - name: Yarn Install
         run: |
           yarn install
@@ -35,22 +29,7 @@ jobs:
       
       - name: Run Appium Doctor
         run: |
-          ./node_modules/.bin/appium-doctor
-
-      # - name: List iOS Devices & Platforms        
-      #   run: |          
-      #     xcrun simctl list      
-      # - name: Install iOS 15.0 Runtime        
-      #   run: |  
-      #     xcversion simulators --install='iOS 15.0'     
-
-      - name: Create and Run iOS Emulator - iPhoneX on iOS 15.2, Update default appium config for iOS        
-        run: |
-           xcrun simctl create TestiPhoneX com.apple.CoreSimulator.SimDeviceType.iPhone-13 com.apple.CoreSimulator.SimRuntime.iOS-15-2 > deviceid.txt 
-           DEVICEUUID=`cat deviceid.txt`          
-           echo $DEVICEUUID          
-           sed -i -e "s/{IPHONE_UUID}/$DEVICEUUID/g" __tests__/appium_config.js          
-           xcrun simctl boot $DEVICEUUID &
+          ./node_modules/.bin/appium-doctor 
 
       - name: Pod Install
         run: |
@@ -69,13 +48,10 @@ jobs:
             sleep 5
           done
 
-      - name: Open Metro Bundler in Background
-        run: |
-          yarn start > bundler.log &
+      # - name: Open Metro Bundler in Background
+      #   run: |
+      #     yarn start > bundler.log &
 
-      - name: Build application through xcode
-        run:  cd ios && xcodebuild -workspace GithubActionsTest.xcworkspace -scheme GithubActionsTest -configuration Debug -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 13' && cd ..
-      
       - name: Build iOS App and Run Tests
         env:
           E2E_TEST_PLATFORM: 'ios'
@@ -89,7 +65,6 @@ jobs:
           cp -R $BUILT_APP ios/build/GithubActionsTest/Build/Products/Debug-iphonesimulator
           sleep 30
           yarn test 
-          bash ./scripts/clickAllowScript.sh
 
       # Upload Bundler Logs
       - name: Upload Build logs
