@@ -38,8 +38,8 @@ jobs:
             sleep 5
           done
 
-      - name: Build application through xcode
-        run:  cd ios && xcodebuild -workspace GithubActionsTest.xcworkspace -scheme GithubActionsTest -configuration Debug -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 13' && cd ..
+      # - name: Build application through xcode
+      #   run:  cd ios && xcodebuild -workspace GithubActionsTest.xcworkspace -scheme GithubActionsTest -configuration Debug -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 13' && cd ..
 
       - name: Open Metro Bundler in Background
         run: |
