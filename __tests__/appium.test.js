@@ -1,10 +1,10 @@
 import wd from 'wd';
 
+const PORT = 4723;
 const driver = wd.promiseChainRemote('localhost', PORT);
 try {
     beforeAll(async () => {
         jasmine.DEFAULT_TIMEOUT_INTERVAL = 60000;
-        const PORT = 4723;
         const config = {
             platformName: "iOS",
             platformVersion: "15.2",
