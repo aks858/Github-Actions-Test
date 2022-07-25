@@ -74,7 +74,7 @@ jobs:
           yarn start > bundler.log &
 
       - name: Build application through xcode
-        run:  cd ios && xcodebuild -workspace GithubActionsTest.xcworkspace -scheme GithubActionsTest -configuration Release -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 12' && cd ..
+        run:  cd ios && xcodebuild -workspace GithubActionsTest.xcworkspace -scheme GithubActionsTest -configuration Debug -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 12' && cd ..
       
       - name: Build iOS App and Run Tests
         env:
