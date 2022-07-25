@@ -20,14 +20,6 @@ jobs:
         run: |
           ./node_modules/.bin/appium-doctor   
 
-      - name: Create and Run iOS Emulator - iPhoneX on iOS 15.2, Update default appium config for iOS        
-        run: |
-           xcrun simctl create TestiPhoneX com.apple.CoreSimulator.SimDeviceType.iPhone-13 com.apple.CoreSimulator.SimRuntime.iOS-15-5 > deviceid.txt 
-           DEVICEUUID=`cat deviceid.txt`          
-           echo $DEVICEUUID          
-           sed -i -e "s/{IPHONE_UUID}/$DEVICEUUID/g" __tests__/appium_config.js          
-           xcrun simctl boot $DEVICEUUID &
-
       - name: Pod Install
         run: |
           cd ios && pod install && cd ..
@@ -49,8 +41,8 @@ jobs:
         run: |
           yarn start > bundler.log &
 
-      - name: Build application through xcode
-        run:  cd ios && xcodebuild -workspace GithubActionsTest.xcworkspace -scheme GithubActionsTest -configuration Debug -sdk iphonesimulator 'platform=iOS Simulator,name=iPhone 13' && cd ..
+      # - name: Build application through xcode
+      #   run:  cd ios && xcodebuild -workspace GithubActionsTest.xcworkspace -scheme GithubActionsTest -configuration Debug -sdk iphonesimulator 'platform=iOS Simulator,name=iPhone 13' && cd ..
       
       - name: Build iOS App and Run Tests
         env:
