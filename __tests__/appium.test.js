@@ -11,16 +11,21 @@ try {
             deviceName: "iPhone 13",
             app: "/Users/runner/Library/Developer/Xcode/DerivedData/GithubActionsTest-cbzjwynjkoijsiftlxjwlpqksrnj/Build/Products/Debug-iphonesimulator/GithubActionsTest.app"
         };
-        const driver = wd.promiseChainRemote('localhost', PORT);
-
-        const data = await driver.status();
-        console.log(data);    
-        let pageSource = await driver.source();
-        console.log(pageSource);
-      
+        console.log(config );
+        try {
+            const driver = wd.promiseChainRemote('localhost', PORT);
+            console.log(await driver);
+        } catch(e) {
+            console.log(e);
+        }
         
-        await driver.init(config);
-        await driver.sleep(2000); // wait for app to load a
+        // await driver.init(config);
+        // await driver.sleep(2000); // wait for app to load a
+
+        // const data = await driver.status();
+        // console.log(data);    
+        // let pageSource = await driver.source();
+        // console.log(pageSource);
       })
       
       test('appium renders', async () => {
